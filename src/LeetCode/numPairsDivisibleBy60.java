@@ -24,9 +24,9 @@ public class numPairsDivisibleBy60 {
 
 	}
 
-	public static void main(String[] args) {
-		int[] time = { 30, 20, 150, 100, 40 };
-		System.out.println(numPairsDivisibleBy60(time));
-	}
+//	public static void main(String[] args) {
+//		int[] time = { 30, 20, 150, 100, 40 };
+//		System.out.println(numPairsDivisibleBy60(time));
+//	}
 
 }
