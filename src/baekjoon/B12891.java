@@ -8,12 +8,12 @@ import java.util.Map;
 
 //https://www.acmicpc.net/problem/12891
 public class B12891 {
-
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String[] input = br.readLine().split(" ");
 		int totalLength = Integer.parseInt(input[0]);
 		int partLength = Integer.parseInt(input[1]);
+
 		String s = br.readLine();
 		input = br.readLine().split(" ");
 		int[] DNA = new int[4];
@@ -30,10 +30,10 @@ public class B12891 {
 		map.put('T', 3);
 
 		for (int i = 0; i < partLength; i++) { // 'A'를 만나면 count[0]++;
-			count[map.get(s.charAt(i))]++; // 맨 앞~ 부분문자열 길이만큼 자른다.
+			count[map.get(s.charAt(i))]++; // 맨 앞 ~ 부분문자열 길이만큼 자른다.
 		}
 
-		for (int k = 0; k < 4; k++) { // 맨 앞~부분문자열에서 조건이 맞는 결과값이 나왔다면 ++;
+		for (int k = 0; k < 4; k++) { // 맨 앞 ~ 부분문자열에서 조건이 맞는 결과값이 나왔다면 ++;
 			if (count[k] < DNA[k])
 				break;
 			if (k == 3)
