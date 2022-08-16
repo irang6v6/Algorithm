@@ -20,7 +20,6 @@ public class B1074 {
 		recur(r, c, p);
 
 		System.out.println(count);
-
 	}
 
 	private static void recur(int r, int c, int p) {
