@@ -47,17 +47,16 @@ public class Solution {
 		opened = new boolean[totalCards + 1];
 		for (int i = 0; i < 2; i++) {
 			int cur = pick[i];
-			if (!opened[card[cur]])
-				score[i]++;
 //			System.out.println("firstPick: " + cur);
 			while (!opened[cur]) {
+                score[i]++;
 				opened[cur] = true;
 				int next = card[cur];
 				if (opened[next])
 					break;
 				cur = next;
 //				System.out.println("Pick: " + cur);
-				score[i]++;
+				
 			}
 		}
 		int gameScore = score[0] * score[1];
