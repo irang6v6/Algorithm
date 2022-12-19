@@ -22,8 +22,9 @@
 	<li><code>1 &lt;= nums.length &lt;= 100</code></li>
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
-
-Runtime: 20 ms, faster than 13.69% of Java online submissions for Largest Number.
+<br>
+<strong>Result:</strong>
+<pre>Runtime: 20 ms, faster than 13.69% of Java online submissions for Largest Number.
 Memory Usage: 45 MB, less than 12.20% of Java online submissions for Largest Number.
-
+</pre>
 </div>
