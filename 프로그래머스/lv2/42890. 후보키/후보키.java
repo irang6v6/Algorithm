@@ -2,17 +2,14 @@ import java.io.IOException;
 import java.util.*;
 
 public class Solution {
-    static boolean[] checkValid;
     static int C, R;
     static int[] columns;
     static String[][] relations;
-    static int answer = 0;
     static List<Set<Integer>> candidateKeys = new ArrayList<>();
 
     public static int solution(String[][] relation) {
         C = relation[0].length;
         R = relation.length;
-        checkValid = new boolean[C];
         relations = relation;
 
         for (int i = 1; i <= C; i++) {
@@ -27,9 +24,6 @@ public class Solution {
         if (count == total) {
             if (checkUniqueness(columns)) {
                 checkMinimality(columns);
-                for (int c : columns) {
-                    checkValid[c] = true;
-                }
             }
             return;
         }
@@ -63,9 +57,10 @@ public class Solution {
                 if (i == R - 1) {
                     return true;
                 }
+            } else {
+                return false;
             }
         }
         return false;
     }
-
 }
