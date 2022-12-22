@@ -16,7 +16,6 @@ public class Solution {
         relations = relation;
 
         for (int i = 1; i <= C; i++) {
-//            System.out.println("-----" + i + "개 뽑는 조합-----");
             columns = new int[i];
             comb(0, 0, i);
         }
@@ -27,7 +26,6 @@ public class Solution {
     private static void comb(int start, int count, int total) { //총 몇 개 뽑을건지
         if (count == total) {
             if (checkUniqueness(columns)) {
-//                System.out.println("후보값 발견!!" + Arrays.toString(columns));
                 checkMinimality(columns);
                 for (int c : columns) {
                     checkValid[c] = true;
@@ -36,7 +34,6 @@ public class Solution {
             return;
         }
         for (int i = start; i < C; i++) {
-
             columns[count] = i;
             comb(i + 1, count + 1, total);
         }
@@ -62,14 +59,10 @@ public class Solution {
             for (int c : columns) {
                 s += relations[i][c];
             }
-//            System.out.println("s: " + s);
             if (set.add(s)) {
                 if (i == R - 1) {
                     return true;
                 }
-                continue;
-            } else {
-                return false;
             }
         }
         return false;
