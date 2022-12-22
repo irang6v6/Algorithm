@@ -49,18 +49,14 @@ public class Solution {
     private static boolean checkUniqueness(int[] columns) {
         Set<String> set = new HashSet<>();
         for (int i = 0; i < R; i++) {
-            String s = "";
+            String data = "";
             for (int c : columns) {
-                s += relations[i][c];
+                data += relations[i][c];
             }
-            if (set.add(s)) {
-                if (i == R - 1) {
-                    return true;
-                }
-            } else {
+            if(!set.add(data)) {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 }

@@ -1,10 +1,10 @@
 # [level 2] 후보키 - 42890 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42890?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42890) 
 
 ### 성능 요약
 
-메모리: 72.3 MB, 시간: 1.96 ms
+메모리: 75.8 MB, 시간: 2.08 ms
 
 ### 구분
 
