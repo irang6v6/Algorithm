@@ -1,68 +1,63 @@
-
 class Solution {
-    static int[] dx = {-1, 0, 1, 0};
-    static int[] dy = {0, -1, 0, 1}; //상,하,좌,우
-    static int N, answer;
-    static int[][] map;
-    static boolean[][] visited;
-
     static class Pos {
-        int r, c, cost, direction;
+        int x, y, d;
 
-        public Pos(int r, int c, int cost, int direction) {
-            this.r = r;
-            this.c = c;
-            this.cost = cost;
-            this.direction = direction;
+        public Pos(int x, int y, int d) {
+            this.x = x;
+            this.y = y;
+            this.d = d;
         }
     }
 
     public static int solution(int[][] board) {
-        answer = Integer.MAX_VALUE;
-        N = board.length - 1;
-        map = board;
-        visited = new boolean[N + 1][N + 1];
-
-        visited[0][0] = true;
-        dfs(new Pos(0, 0, 0, 4));
-
-        return answer;
-    }
-
-    private static void dfs(Pos cur) {
-        if (cur.r == N && cur.c == N) {
-            if (answer > cur.cost) {
-                answer = cur.cost;
+        int minSum = Integer.MAX_VALUE;
+        int N = board.length;
+        int[][][] dp = new int[N][N][4]; //4가지 방향에서 오는 누적값을 따로따로 저장함
+        for (int[][] row1 : dp) {//방향 당 요금이 더 적을때만 갱신되어야 함
+            for (int[] row2 : row1) {
+                Arrays.fill(row2, Integer.MAX_VALUE);
             }
-            return;
         }
 
-        if (cur.cost > answer) {
-            return;
+        for (int i = 0; i < 4; i++) { //출발자점 0원으로 세팅
+            dp[0][0][i] = 0;
+        }
+
+        int dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0}; //우하좌상->(0,2),(1,3)끼리가 직선
+
+        Queue<Pos> queue = new ArrayDeque<>();
+
+        queue.add(new Pos(0, 0, -1));//시작점은 이전 방향이 없으므로 d : -1
+        while (!queue.isEmpty()) {
+            Pos cur = queue.poll();
+
+            for (int nextD = 0; nextD < 4; nextD++) {
+                int nextX = cur.x + dx[nextD];
+                int nextY = cur.y + dy[nextD];
+                int nextPrice = 0;
+
+                if (cur.d < 0) {
+                    nextPrice = 100;
+                } else if (cur.d < 0 || Math.abs(cur.d - nextD) == 2 || cur.d == nextD) {//100원 일때
+                    nextPrice = dp[cur.x][cur.y][cur.d] + 100;
+                } else {
+                    nextPrice = dp[cur.x][cur.y][cur.d] + 600;
+                }
+
+                if (nextX < 0 || nextX >= N || nextY < 0 || nextY >= N || nextPrice > dp[nextX][nextY][nextD] || board[nextX][nextY] == 1)
+                    continue;
+
+                dp[nextX][nextY][nextD] = nextPrice;
+                queue.add(new Pos(nextX, nextY, nextD));
+            }
         }
 
         for (int i = 0; i < 4; i++) {
-            int nextX = cur.r + dx[i];
-            int nextY = cur.c + dy[i];
-            int nextCost = 0;
-
-            if (nextX < 0 || nextX > N || nextY < 0 || nextY > N || visited[nextX][nextY] || map[nextX][nextY] == 1) {
-                continue;
+            if (minSum > dp[N - 1][N - 1][i]) {
+                minSum = dp[N - 1][N - 1][i];
             }
-
-            if (cur.direction == i || cur.direction == 4 || Math.abs(cur.direction - i) == 2) {
-                nextCost = cur.cost + 100;
-            } else {
-                nextCost = cur.cost + 600;
-            }
-            
-            if (nextCost > answer) {
-                return;
-            }
-
-            visited[nextX][nextY] = true;
-            dfs(new Pos(nextX, nextY, nextCost, i));
-            visited[nextX][nextY] = false;
         }
+
+        return minSum;
     }
 }
