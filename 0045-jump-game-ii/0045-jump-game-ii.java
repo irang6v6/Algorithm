@@ -1,4 +1,4 @@
-class Solution {
+class Solution { //dp를 이용한 풀이
      public static int jump(int[] nums) {
         int[] dp = new int[nums.length];
         Arrays.fill(dp, Integer.MAX_VALUE);
