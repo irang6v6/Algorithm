@@ -29,12 +29,8 @@ class Solution {
             return nums.length;
         }
 
-        //3. sliding windows 기법으로 연속 k개씩 1로 바꾸기
+        //3. sliding windows
         for (int i = 0; i <= zero.length - k; i++) {
-            int[] copy = nums.clone();
-            for (int j = 0; j < k; j++) {
-                copy[zero[i + j]] = 1;
-            }
 
             //index 범위 넘어가지 않도록 처리
             int start = (i - 1) < 0 ? -1 : zero[i - 1];
