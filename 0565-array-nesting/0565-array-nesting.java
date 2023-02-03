@@ -1,16 +1,15 @@
 class Solution {
     int[] num;
-    Set<Integer> set = new HashSet<>();
 
     public int arrayNesting(int[] nums) {
         num = nums;
         int longestLength = Integer.MIN_VALUE;
 
-        for (int n : nums) {
-            if (set.contains(n)) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == -1) {
                 continue;
             }
-            int length = recur(n, 0);
+            int length = recur(nums[i], 0);
             if (length > longestLength) {
                 longestLength = length;
             }
@@ -18,10 +17,11 @@ class Solution {
         return longestLength;
     }
 
-    private int recur(int n, int count) {
-        if (!set.contains(n)) {
-            set.add(n);
-            return recur(num[n], count + 1);
+    private int recur(int index, int count) {
+        if (num[index] != -1) {
+            int next = num[index];
+            num[index] = -1;
+            return recur(next, count + 1);
         } else {
             return count;
         }
