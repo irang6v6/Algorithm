@@ -27,6 +27,7 @@ class Solution {
             }
         }
 
+
         if (arrayList.size() == 0) {
             return new int[]{-1};
         }
