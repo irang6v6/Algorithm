@@ -16,7 +16,6 @@ class Solution {
                         num = num - 26;
                     }
                 }
-                
                 sb.append((char)num);
             }
         }
