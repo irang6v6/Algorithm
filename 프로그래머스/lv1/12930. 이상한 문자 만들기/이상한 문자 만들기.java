@@ -18,6 +18,6 @@ class Solution {
                 toUpper = !toUpper;
             }
         }
-        return builder.toString().replaceAll("\\s+"," ").trim();
+        return builder.toString();
     }
 }
