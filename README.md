@@ -7,7 +7,7 @@
 - 4인팟, 일주일에 3~4문제
 - LeetCode `Medium`
 - Programmers `Lv.2`
-- 풀이는 [노션](https://www.notion.so/bfa0b44b538f4649a2203a55a329b128)에 최근 들어 기록중
+- 풀이는 [노션](https://www.notion.so/bfa0b44b538f4649a2203a55a329b128)에
 </br>
 
 ### 🔥 개인공부
@@ -15,6 +15,7 @@
 ---
 
 - 그때그때 필요한 문제들
+- 파이썬 전동드릴 연습중
 </br>
 
 ### 현재 알고리즘 수준
