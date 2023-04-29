@@ -2,17 +2,17 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String s) {
-        int[] answer = new int[2];
+        int loop = 0;
+        int removed = 0;
         while(!"1".equals(s)){
-            answer[0]++;
+            loop++;
+            int count = 0;
             for(char c : s.toCharArray()){
-                if(c=='0') answer[1]++;
+                if(c == '0') count++;
             }
-            s = s.replaceAll("0","");
-            int len = s.length();
-            s = Integer.toBinaryString(len);
+            removed += count;
+            s = Integer.toBinaryString(s.length() - count);
         }
-       
-        return answer;
+        return new int[] { loop, removed };
     }
 }
