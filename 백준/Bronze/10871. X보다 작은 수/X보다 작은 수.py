@@ -1,5 +1,6 @@
 N, X = map(int,input().split())
-args = list(map(int,input().split()))
-for i in range(N) :
-    if args[i] < X :
-        print(args[i],end=' ')
+args = input().split()
+
+for i in args :
+    if int(i) < X :
+        print(i,end=' ')
