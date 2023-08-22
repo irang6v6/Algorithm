@@ -9,8 +9,5 @@ def solution(code):
             if code[idx] != "1" and idx % 2 == 1:
                 ret += code[idx]
         if code[idx] == "1":
-            if mode == 1:
-                mode = 0
-            else:
-                mode = 1
+            mode ^= 1
     return ret if len(ret) > 0 else "EMPTY"
