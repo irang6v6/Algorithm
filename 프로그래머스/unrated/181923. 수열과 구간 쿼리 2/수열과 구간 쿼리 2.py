@@ -5,7 +5,5 @@ def solution(arr, queries):
         for i in range(s,e+1):
             if arr[i] > k and arr[i] < tmp:
                 tmp = arr[i] 
-        if tmp == 1000001:
-            tmp = -1
-        answer.append(tmp)
+        answer.append(tmp if tmp != 1000001 else -1)
     return answer
