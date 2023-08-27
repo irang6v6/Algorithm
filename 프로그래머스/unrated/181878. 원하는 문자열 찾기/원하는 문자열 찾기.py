@@ -1,4 +1,2 @@
 def solution(myString, pat):
-    myString = myString.lower()
-    pat = pat.lower()
-    return int(pat in myString)
+    return int(pat.lower() in myString.lower())
